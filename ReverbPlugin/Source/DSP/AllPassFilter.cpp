@@ -26,14 +26,16 @@ AllPassFilter::~AllPassFilter(){
     
 }
 
-void AllPassFilter::prepareToPlay(float delay, float gain){
+void AllPassFilter::prepareToPlay(float delay, float gain, float Fs){
     setDelay(delay);
     setGain(gain);
+    setFs(Fs);
 }
 
-void AllPassFilter::prepareToPlay(float delay, float gain, float speed, float depth){
+void AllPassFilter::prepareToPlay(float delay, float gain, float Fs, float speed, float depth){
     setDelay(delay);
     setGain(gain);
+    setFs(Fs);
     setSpeed(speed);
     setDepth(depth);
 }

@@ -18,8 +18,8 @@ class AllPassFilter{
     AllPassFilter(float delay, float gain, float Fs, float speed, float depth);
     ~AllPassFilter();
     
-    void prepareToPlay(float delay, float gain);
-    void prepareToPlay(float delay, float gain, float speed, float depth);
+    void prepareToPlay(float delay, float gain, float Fs);
+    void prepareToPlay(float delay, float gain, float Fs, float speed, float depth);
     
     float getDelay();
     void setDelay(float delay);
