@@ -81,9 +81,9 @@ void AllPassFilter::setFs(float Fs){
 
 
 float AllPassFilter::processSample(float x, int channel){
-    delayInput[channel] = x + delayOutput[channel];
+    delayInput[channel] = x + -gain * delayOutput[channel];
     
     delayOutput[channel] = fracDelay.processSample(delayInput[channel], channel);
     
-    return delayOutput[channel] + x * gain;
+    return delayOutput[channel] + delayInput[channel] * gain;
 }
