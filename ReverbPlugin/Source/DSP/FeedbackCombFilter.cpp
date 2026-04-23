@@ -10,6 +10,7 @@
 
 #include "FeedbackCombFilter.h"
 
+FeedbackCombFilter::FeedbackCombFilter(float ms, float sampleRate, float speed = 1.f, float depth = 10.f);
 
 float FeedbackCombFilter::processSample(float x, int channel){
    fractionalDelay.processSample(x,chaneel);
@@ -31,4 +32,12 @@ void FeedbackCombFilter::setGain(float g){
 
 void FeedbackCombFilter::setDelayMs(float ms){
     delay = (ms/1000) * Fs;
+}
+
+
+void FeedbackCombFilter::setSpeed(float s){
+	fractionalDelay.setSpeed(s);	
+}
+void FeedbackCombFilter::setDepth(float d){
+	fractionalDelay.setDepth(d);
 }

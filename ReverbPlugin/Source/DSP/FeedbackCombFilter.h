@@ -16,6 +16,7 @@ class FeedbackCombFilter
     public:
     
     FeedbackCombFilter();
+	FeedbackCombFilter(float ms, float sampleRate, float speed = 1.f, float depth = 10.f);
     
     //destructor
     ~FeedbackCombFilter();
@@ -26,9 +27,11 @@ class FeedbackCombFilter
     
     void setGain(float g);
     
-    void setDelaySamples(float delay);
-    
     void setDelayMs(float ms);
+
+	void setSpeed(float s);
+	void setDepth(float d);
+ 
     
 //    void setSpeed(float speed);
 //    void setDepth(float depth);
