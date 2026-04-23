@@ -2031,6 +2031,9 @@
         </GROUP>
       </GROUP>
       <GROUP id="{CFB062D8-286B-C8F0-5D56-F4229F54DD8B}" name="DSP">
+        <FILE id="MDgvPl" name="AllPassFilter.cpp" compile="1" resource="0"
+              file="Source/DSP/AllPassFilter.cpp"/>
+        <FILE id="Os6vXm" name="AllPassFilter.h" compile="0" resource="0" file="Source/DSP/AllPassFilter.h"/>
         <FILE id="MLkAdd" name="Biquad.cpp" compile="1" resource="0" file="Source/DSP/Biquad.cpp"/>
         <FILE id="XW4fPL" name="Biquad.h" compile="0" resource="0" file="Source/DSP/Biquad.h"/>
         <FILE id="oWlUWJ" name="FractionalDelay.cpp" compile="1" resource="0"
@@ -2103,7 +2106,7 @@
         <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors_headless" path="../../../../Shared/dev/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors_headless" path="../../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
