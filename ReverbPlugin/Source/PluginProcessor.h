@@ -65,7 +65,11 @@ public:
             return outputLevel[0].load();
     }
     
+    juce::AudioProcessorValueTreeState aptvs;
+    
 private:
+    
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameters();
     
     juce::SharedResourcePointer<SharedImages>                   m_pSharedImagesPtr;
 

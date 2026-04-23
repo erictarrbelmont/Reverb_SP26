@@ -19,7 +19,7 @@ ReverbPluginAudioProcessor::ReverbPluginAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ), aptvs (*this,nullptr,"Parameters",createParameters())
 #endif
 {
 }
@@ -93,8 +93,10 @@ void ReverbPluginAudioProcessor::changeProgramName (int index, const juce::Strin
 //==============================================================================
 void ReverbPluginAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+        std::atomic<float>* reverbTime = aptvs.getRawParameterValue("REVERBTIME");
+        std::atomic<float>* diffusion = aptvs.getRawParameterValue("DIFFUSION");
+        std::atomic<float>* wetDry = aptvs.getRawParameterValue("WETDRY");
+        std::atomic<float>* LPF = aptvs.getRawParameterValue("LPF");
 }
 
 void ReverbPluginAudioProcessor::releaseResources()
@@ -188,4 +190,16 @@ void ReverbPluginAudioProcessor::setStateInformation (const void* data, int size
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new ReverbPluginAudioProcessor();
+}
+
+juce::AudioProcessorValueTreeState::ParameterLayout ReverbPluginAudioProcessor::createParameters()
+{
+    std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+    
+    params.push_back (std::make_unique<juce::AudioParameterFloat>("REVERBTIME","Reverb Time",0.0f,1.0f,0.5f));
+    params.push_back (std::make_unique<juce::AudioParameterFloat>("DIFFUSION","Diffusion",0.0f,1.0f,0.0f));
+    params.push_back (std::make_unique<juce::AudioParameterFloat>("WETDRY","Wet/Dry",0.0f,1.0f,0.0f));
+    params.push_back (std::make_unique<juce::AudioParameterFloat>("LPF","LPF",5000.f,20000.f,5000.f));
+    
+    return { params.begin(), params.end() };
 }
