@@ -2037,6 +2037,10 @@
               file="Source/DSP/FractionalDelay.cpp"/>
         <FILE id="POBQm9" name="FractionalDelay.hpp" compile="0" resource="0"
               file="Source/DSP/FractionalDelay.hpp"/>
+        <FILE id="c3uxbM" name="SchroederReverb.cpp" compile="1" resource="0"
+              file="Source/DSP/SchroederReverb.cpp"/>
+        <FILE id="yXgqyy" name="SchroederReverb.h" compile="0" resource="0"
+              file="Source/DSP/SchroederReverb.h"/>
       </GROUP>
       <GROUP id="{56188484-263D-73C7-394F-7793481CEA9B}" name="GUI">
         <FILE id="HfOs18" name="ButtonWidgets.h" compile="0" resource="0" file="Source/GUI/ButtonWidgets.h"/>
@@ -2067,6 +2071,8 @@
     <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
             useGlobalPath="1"/>
     <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors_headless" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -2097,6 +2103,7 @@
         <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors_headless" path="../../../../Shared/dev/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
