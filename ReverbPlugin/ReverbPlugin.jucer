@@ -2036,6 +2036,10 @@
         <FILE id="Os6vXm" name="AllPassFilter.h" compile="0" resource="0" file="Source/DSP/AllPassFilter.h"/>
         <FILE id="MLkAdd" name="Biquad.cpp" compile="1" resource="0" file="Source/DSP/Biquad.cpp"/>
         <FILE id="XW4fPL" name="Biquad.h" compile="0" resource="0" file="Source/DSP/Biquad.h"/>
+        <FILE id="grOgEp" name="FeedbackCombFilter.cpp" compile="1" resource="0"
+              file="Source/DSP/FeedbackCombFilter.cpp"/>
+        <FILE id="mvdwBf" name="FeedbackCombFilter.h" compile="0" resource="0"
+              file="Source/DSP/FeedbackCombFilter.h"/>
         <FILE id="oWlUWJ" name="FractionalDelay.cpp" compile="1" resource="0"
               file="Source/DSP/FractionalDelay.cpp"/>
         <FILE id="POBQm9" name="FractionalDelay.hpp" compile="0" resource="0"

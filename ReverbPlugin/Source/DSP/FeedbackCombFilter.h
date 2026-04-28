@@ -23,12 +23,15 @@ class FeedbackCombFilter
     
     float processSample(float x, int channel);
 
-    void setFs(float sampleRate);
+
     
     void setGain(float g);
     
+    // interacting w/ FractionalDelayObject
+    void setFs(float sampleRate);
     void setDelayMs(float ms);
 
+    // LFO controls
 	void setSpeed(float s);
 	void setDepth(float d);
  
@@ -41,9 +44,9 @@ private:
     
     float Fs = 48000.f;
     
-    float delay = 5.f;
+    float delayMs = 5.f; // delay in milliseconds
     
-    float gain;
+    float gain; // 0-1
 //    
 //    const int MAX_BUFFER_SIZE = 96000;
 //    float delayBuffer[96000][2] = {0.0f};

@@ -10,34 +10,34 @@
 
 #include "FeedbackCombFilter.h"
 
-FeedbackCombFilter::FeedbackCombFilter(float ms, float sampleRate, float speed = 1.f, float depth = 10.f);
-
 float FeedbackCombFilter::processSample(float x, int channel){
-   fractionalDelay.processSample(x,chaneel);
+   return fractionalDelay.processSample(x,channel) * this->gain;
     
 }
 
-void FeedbackCombFilter::setFs(float sampleRate){
-    //updating delay value to new sampleRate
-    delay *= sampleRate/Fs;
+void FeedbackCombFilter::setFs(float sampleRate){    
     
     fractionalDelay.setFs(sampleRate);
     Fs = sampleRate;
+
+    //updating delay value to new sampleRate
+    FeedbackCombFilter::setDelayMs(this->delayMs);    
     
 }
 
 void FeedbackCombFilter::setGain(float g){
-    gain = g;
+    this->gain = g;
 }
 
 void FeedbackCombFilter::setDelayMs(float ms){
-    delay = (ms/1000) * Fs;
+    float delaySamples = this->delayMs * Fs;
+    fractionalDelay.setDelaySamples(this->delay);  
 }
-
 
 void FeedbackCombFilter::setSpeed(float s){
 	fractionalDelay.setSpeed(s);	
 }
+
 void FeedbackCombFilter::setDepth(float d){
 	fractionalDelay.setDepth(d);
 }
