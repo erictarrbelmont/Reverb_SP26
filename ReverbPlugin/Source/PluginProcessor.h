@@ -14,6 +14,9 @@
 //==============================================================================
 /**
 */
+using SVFL = juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear>;
+
+
 class ReverbPluginAudioProcessor  : public juce::AudioProcessor
 {
 public:
@@ -68,6 +71,9 @@ public:
     juce::AudioProcessorValueTreeState aptvs;
     
 private:
+	
+	SVFL wetDryPercentage = 0.5f
+	SchroederReverb reverb;
     
     juce::AudioProcessorValueTreeState::ParameterLayout createParameters();
     
