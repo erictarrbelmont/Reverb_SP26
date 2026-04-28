@@ -30,15 +30,24 @@ public:
     void resized() override;
 
 private:
-    ReverbPluginAudioProcessor&   audioProcessor;
-    SharedImages*               m_pSharedImages;
-    BigKnob                     bigKnob;
-    MediumKnob                  mediumKnob;
-    VertSlider                  vertSlider;
-    HitPads                     hitPads;
-    WheelSlider                 wheelSlider;
-    VUMeter                     vuMeter;
-    SimpleMeter                 simpleMeter;
+    ReverbPluginAudioProcessor& audioProcessor;
+    SharedImages* m_pSharedImages;
+    
+    BigKnob reverbTime;
+    juce::Label reverbTimeLabel;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> reverbTimeAttatchment;
+    
+    BigKnob diffusion;
+    juce::Label diffusionLabel;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> diffusionAttatchment;
+    
+    BigKnob wetDry;
+    juce::Label wetDryLabel;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> wetDryAttatchment;
+    
+    BigKnob LPF;
+    juce::Label LPFLabel;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> LPFAttatchment;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

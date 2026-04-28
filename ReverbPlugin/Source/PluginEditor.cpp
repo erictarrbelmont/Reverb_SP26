@@ -11,11 +11,12 @@
 
 //==============================================================================
 ReverbPluginAudioProcessorEditor::ReverbPluginAudioProcessorEditor (ReverbPluginAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+    : AudioProcessorEditor (&p), audioProcessor (p), mainComponent(p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
+    addAndMakeVisible(mainComponent);
 }
 
 ReverbPluginAudioProcessorEditor::~ReverbPluginAudioProcessorEditor()
@@ -26,15 +27,16 @@ ReverbPluginAudioProcessorEditor::~ReverbPluginAudioProcessorEditor()
 void ReverbPluginAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    g.setColour (juce::Colours::white);
-    g.setFont (juce::FontOptions (15.0f));
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+//    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+//
+//    g.setColour (juce::Colours::white);
+//    g.setFont (juce::FontOptions (15.0f));
+//    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
 }
 
 void ReverbPluginAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
+    mainComponent.setBounds(0, 0, getWidth(), getHeight());
 }

@@ -12,21 +12,40 @@
 #include "MainComponent.h"
 
 //==============================================================================
-MainComponent::MainComponent(ReverbPluginAudioProcessor& p) : audioProcessor(p), m_pSharedImages(p.getSharedImages()), bigKnob(m_pSharedImages),
-    mediumKnob(m_pSharedImages), vertSlider(m_pSharedImages), hitPads(m_pSharedImages), wheelSlider(m_pSharedImages), vuMeter(audioProcessor), simpleMeter(audioProcessor)
+MainComponent::MainComponent(ReverbPluginAudioProcessor& p) : audioProcessor(p), m_pSharedImages(p.getSharedImages()),
+    reverbTime(m_pSharedImages), diffusion(m_pSharedImages), wetDry(m_pSharedImages), LPF(m_pSharedImages)
 {
-    //addAndMakeVisible(bigKnob);
-    addAndMakeVisible(mediumKnob);
-    addAndMakeVisible(vertSlider);
-    addAndMakeVisible(hitPads);
-    addAndMakeVisible(wheelSlider);
-    addAndMakeVisible(vuMeter);
-    addAndMakeVisible(simpleMeter);
+    reverbTime.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    reverbTime.setTextBoxStyle(juce::Slider::TextBoxBelow,true,50,25);
+    reverbTimeLabel.setText(audioProcessor.aptvs.getParameter("REVERBTIME")->getName(5),juce::dontSendNotification);
+    reverbTimeLabel.setJustificationType(juce::Justification::centredTop);
+    reverbTimeLabel.attachToComponent(&reverbTime, false);
+    addAndMakeVisible(reverbTime);
+    reverbTimeAttatchment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.aptvs,"REVERBTIME",reverbTime);
     
-    wheelSlider.onDragEnd = [this] ()
-    {
-        wheelSlider.setValue(5.0);
-    };
+    diffusion.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    diffusion.setTextBoxStyle(juce::Slider::TextBoxBelow,true,50,25);
+    diffusionLabel.setText(audioProcessor.aptvs.getParameter("DIFFUSION")->getName(5),juce::dontSendNotification);
+    diffusionLabel.setJustificationType(juce::Justification::centredTop);
+    diffusionLabel.attachToComponent(&diffusion, false);
+    addAndMakeVisible(diffusion);
+    diffusionAttatchment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.aptvs,"DIFFUSION",diffusion);
+    
+    wetDry.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    wetDry.setTextBoxStyle(juce::Slider::TextBoxBelow,true,50,25);
+    wetDryLabel.setText(audioProcessor.aptvs.getParameter("WETDRY")->getName(5),juce::dontSendNotification);
+    wetDryLabel.setJustificationType(juce::Justification::centredTop);
+    wetDryLabel.attachToComponent(&wetDry, false);
+    addAndMakeVisible(wetDry);
+    wetDryAttatchment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.aptvs,"WETDRY",wetDry);
+    
+    LPF.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+    LPF.setTextBoxStyle(juce::Slider::TextBoxBelow,true,50,25);
+    LPFLabel.setText(audioProcessor.aptvs.getParameter("LPF")->getName(5),juce::dontSendNotification);
+    LPFLabel.setJustificationType(juce::Justification::centredTop);
+    LPFLabel.attachToComponent(&LPF, false);
+    addAndMakeVisible(LPF);
+    LPFAttatchment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.aptvs,"LPF",LPF);
 }
 
 MainComponent::~MainComponent()
@@ -41,15 +60,9 @@ void MainComponent::paint (juce::Graphics& g)
 
 void MainComponent::resized()
 {
-    
-    //bigKnob.setBounds(700, 250, 215, 245);
-    mediumKnob.setBounds(700, 250, 212, 252);
-    vertSlider.setBounds(0, 202, 154, 394);
-    vuMeter.setBounds(0, 0, 536/2, 280/2);
-    simpleMeter.setBounds(250, 250, 50, 250);
-
-    hitPads.setBounds(736, 28, 182, 210);
-    wheelSlider.setBounds(500, 200, 160, 406);
-    
+    reverbTime.setBounds(50,50,100,100);
+    diffusion.setBounds(250,50,100,100);
+    wetDry.setBounds(50,150,100,100);
+    LPF.setBounds(250,150,100,100);
 
 }
