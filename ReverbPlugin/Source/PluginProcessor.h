@@ -68,11 +68,15 @@ public:
             return outputLevel[0].load();
     }
     
+    juce::AudioProcessorValueTreeState aptvs;
+    
 private:
 	
 	SVFL wetDryPercentage = 0.5f
 	SchroederReverb reverb;
-	
+    
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameters();
+    
     juce::SharedResourcePointer<SharedImages>                   m_pSharedImagesPtr;
 
     std::atomic<float>                                          outputLevel[2] = { 0.0f, 0.0f };     // 0 for left channel, 1 for right channel
